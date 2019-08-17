@@ -17,8 +17,8 @@
     "test": "node src/js/all.test.js | tap-min",
     "lint": "standard",
     "start": "yarn build && parcel watch src/manifest.json",
-    "build:locales": "cp -r src/_locales/ src/js/locales",
-    "build": "yarn build:locales && parcel build src/manifest.json --no-minify && sed -i '' '1s;^;var ;' ./dist/js/index.js",
+    "build:locales": "mkdir .\\src\\js\\locales & xcopy \"src\\_locales\" \"src\\js\\locales\\\" /E /Y",
+    "build": "yarn build:locales && parcel build src/manifest.json --no-minify && sed -i \"\" \"1s;^;var ;\" ./dist/js/index.js",
     "release:package": "yarn build && cd dist/ && cross-zip . ../anki-leo.zip && cd -",
     "release:version": "standard-version",
     "release": "yarn lint && yarn test && yarn release:package && yarn release:version"
@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/troggy/anki-leo/issues"
   },
-  "homepage": "http://troggy.github.io/anki-leo/"
+  "homepage": "http://troggy.github.io/anki-leo/",
+  "dependencies": {
+    "rollup": "^1.19.4"
+  }
 }
